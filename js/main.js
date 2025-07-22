@@ -34,20 +34,26 @@
         const r = evaluateExpression(radiusInput.value);
         const deg = evaluateExpression(degInput.value);
 
+        // 入力が無効な場合は結果を表示しない
         if (cx === null || cy === null || r === null || deg === null) {
             xResult.textContent = '--';
             yResult.textContent = '--';
             return;
         }
 
+        // 度をラジアンに変換
         const rad = deg * Math.PI / 180;
+        // 中心座標(cx, cy)と半径(r)を使って、円周上の点の座標を計算
         const x = cx + r * Math.cos(rad);
         let y = cy + r * Math.sin(rad);
 
+        // Y座標の反転チェックボックスがチェックされている場合、Y座標を反転
         if (invertYCheckbox.checked) {
             y *= -1;
         }
 
+
+        // 結果を小数点以下5桁まで表示
         xResult.textContent = x.toFixed(5);
         yResult.textContent = y.toFixed(5);
     }
@@ -63,7 +69,6 @@
 
 
     // 計算結果のコピー部分
-
     function copyTextOnClick(resultId, msgId) {
         const resultEl = document.getElementById(resultId);
         const msgEl = document.getElementById(msgId);
