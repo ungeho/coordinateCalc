@@ -45,12 +45,14 @@
         const rad = deg * Math.PI / 180;
         // 中心座標(cx, cy)と半径(r)を使って、円周上の点の座標を計算
         const x = cx + r * Math.cos(rad);
-        let y = cy + r * Math.sin(rad);
+        let y = r * Math.sin(rad);
 
         // Y座標の反転チェックボックスがチェックされている場合、Y座標を反転
         if (invertYCheckbox.checked) {
             y *= -1;
         }
+
+        y = cy + y; // 中心座標を加える
 
 
         // 結果を小数点以下5桁まで表示
