@@ -12,13 +12,18 @@
     <form>
         <label>中心座標(x,y)：</label>
         <div class="flex-inputs">
-            <input type="text" placeholder="x" id="cx" value="100">
-            <input type="text" placeholder="y" id="cy" value="100">
+            <input type="text" placeholder="中心座標x(必須)" id="cx" value="100">
+            <input type="text" placeholder="中心座標y(必須)" id="cy" value="100">
+        </div>
+        <label>オブジェクト座標(x,y)：</label>
+        <div class="flex-inputs">
+            <input type="text" placeholder="object-x(任意)" id="ox">
+            <input type="text" placeholder="object-y(任意)" id="oy">
         </div>
         <label>半径(radius)：</label>
-        <input type="text" placeholder="半径" id="radius">
+        <input type="text" placeholder="半径(必須)" id="radius">
         <label>角度(deg)：</label>
-        <input type="text" placeholder="角度" id="deg">
+        <input type="text" placeholder="角度(必須)" id="deg">
         <div>
             <label>
                 <input type="checkbox" id="invert-y" checked>

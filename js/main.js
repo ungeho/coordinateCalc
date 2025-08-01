@@ -3,6 +3,8 @@
 {
     const cxInput = document.getElementById('cx');
     const cyInput = document.getElementById('cy');
+    const oxInput = document.getElementById('ox');
+    const oyInput = document.getElementById('oy');
     const radiusInput = document.getElementById('radius');
     const degInput = document.getElementById('deg');
     const xResult = document.getElementById('x-result');
@@ -31,6 +33,8 @@
     function calculateCoordinates() {
         const cx = evaluateExpression(cxInput.value);
         const cy = evaluateExpression(cyInput.value);
+        let ox = evaluateExpression(oxInput.value) ?? 0;
+        let oy = evaluateExpression(oyInput.value) ?? 0;
         const r = evaluateExpression(radiusInput.value);
         const deg = evaluateExpression(degInput.value);
 
@@ -44,7 +48,7 @@
         // 度をラジアンに変換
         const rad = deg * Math.PI / 180;
         // 中心座標(cx, cy)と半径(r)を使って、円周上の点の座標を計算
-        const x = cx + r * Math.cos(rad);
+        const x = (cx - ox) + r * Math.cos(rad);
         let y = r * Math.sin(rad);
 
         // Y座標の反転チェックボックスがチェックされている場合、Y座標を反転
@@ -52,7 +56,7 @@
             y *= -1;
         }
 
-        y = cy + y; // 中心座標を加える
+        y = (cy - oy) + y; // 中心座標を加える
 
 
         // 結果を小数点以下5桁まで表示
