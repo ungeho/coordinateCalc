@@ -81,7 +81,10 @@
         let isAnimating = false;
 
         resultEl.addEventListener("click", () => {
+            // アニメーション中は何もしない
             if (isAnimating) return;
+            // 計算結果が無効な場合は何もしない
+            if (xResult.textContent === '--' || yResult.textContent === '--') return;
 
             const value = resultEl.textContent;
             navigator.clipboard.writeText(value).then(() => {
