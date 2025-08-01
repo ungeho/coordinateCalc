@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>座標計算</title>
+<style>
+    .form-section {
+        display: none;
+        margin-top: 15px;
+    }
+
+    .form-section.active {
+        display: block;
+    }
+</style>
 </head>
 <body>
     <h1>座標計算用</h1>
@@ -15,11 +25,21 @@
             <input type="text" placeholder="中心座標x(必須)" id="cx" value="100">
             <input type="text" placeholder="中心座標y(必須)" id="cy" value="100">
         </div>
-        <label>オブジェクト座標(x,y)：</label>
-        <div class="flex-inputs">
+        <label><input type="radio" name="coord-type" value="object-xy" checked> オブジェクト座標(x,y)：</label>
+        <label><input type="radio" name="coord-type" value="object-polar"> オブジェクト座標(radius,deg)</label>
+
+        <!-- xy座標 -->
+        <div id="xy-fields" class="flex-inputs form-group active">
             <input type="text" placeholder="object-x(任意)" id="ox">
             <input type="text" placeholder="object-y(任意)" id="oy">
         </div>
+
+        <!-- 極座標 -->
+        <div id="polar-fields" class="flex-inputs form-group">
+            <input type="text" placeholder="object-radius(任意)" id="o-radius">
+            <input type="text" placeholder="object-degree(任意)" id="o-deg">
+        </div>
+
         <label>半径(radius)：</label>
         <input type="text" placeholder="半径(必須)" id="radius">
         <label>角度(deg)：</label>
@@ -41,6 +61,23 @@
         </div>
     </form>
 
+
+
     <script src="js/main.js"></script>
+
+
+<script>
+    const radios = document.querySelectorAll('input[name="form"]');
+    const sections = document.querySelectorAll('.form-section');
+    radios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            sections.forEach(section => section.classList.remove('active'));
+            const selectedForm = document.getElementById(radio.value);
+            if (selectedForm) {
+                selectedForm.classList.add('active');
+            }
+        });
+    });
+</script>
 </body>
 </html>

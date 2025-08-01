@@ -91,3 +91,20 @@ input:focus::placeholder {
     opacity: 0;
 }
 
+.form-group {
+    display: none;
+    margin-top: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.form-group input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group.active {
+    display: flex;
+}
