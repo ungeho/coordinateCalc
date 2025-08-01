@@ -39,12 +39,11 @@
         const r = evaluateExpression(radiusInput.value);
         const deg = evaluateExpression(degInput.value);
 
-        // どちらか片方の入力が無効な場合はどちらも初期値として0を使用する。
+        // オブジェクト座標の一方でも入力が無効な場合はどちらも初期値として0を適用する。
         if (ox === null || oy === null) {
             ox = 0;
             oy = 0;
         }
-
 
         // 入力が無効な場合は結果を表示しない
         if (cx === null || cy === null || r === null || deg === null) {
