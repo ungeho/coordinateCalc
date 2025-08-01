@@ -33,10 +33,18 @@
     function calculateCoordinates() {
         const cx = evaluateExpression(cxInput.value);
         const cy = evaluateExpression(cyInput.value);
-        let ox = evaluateExpression(oxInput.value) ?? 0;
-        let oy = evaluateExpression(oyInput.value) ?? 0;
+        // 入力が無効な場合は初期値として0を使用する。
+        let ox = evaluateExpression(oxInput.value);
+        let oy = evaluateExpression(oyInput.value);
         const r = evaluateExpression(radiusInput.value);
         const deg = evaluateExpression(degInput.value);
+
+        // どちらか片方の入力が無効な場合はどちらも初期値として0を使用する。
+        if (ox === null || oy === null) {
+            ox = 0;
+            oy = 0;
+        }
+
 
         // 入力が無効な場合は結果を表示しない
         if (cx === null || cy === null || r === null || deg === null) {
@@ -65,7 +73,7 @@
     }
 
     // 入力が変わったら再計算
-    [cxInput, cyInput, radiusInput, degInput, invertYCheckbox].forEach(input => {
+    [cxInput, cyInput, oxInput, oyInput, radiusInput, degInput, invertYCheckbox].forEach(input => {
         input.addEventListener('input', calculateCoordinates);
         input.addEventListener('change', calculateCoordinates); // チェックボックス用
     });
