@@ -77,10 +77,10 @@
                 oy = 0;
             }
         } else if (selectedRadio && selectedRadio.value === 'object-polar') {
-            // 楕円座標系のオブジェクト座標を取得
+            // オブジェクトの円周の半径と角度を取得
             let oRadius = evaluateExpression(oRadiusInput.value);
             let oDeg = evaluateExpression(oDegInput.value);
-            // 楕円座標系の半径と角度を使って、オブジェクト座標を計算
+            // 半径と角度を使って、オブジェクト座標を計算
             if (oRadius !== null && oDeg !== null) {
                 ox = cx + oRadius * Math.cos(oDeg * Math.PI / 180);
 
